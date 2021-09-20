@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2021 at 03:05 PM
+-- Generation Time: Sep 20, 2021 at 03:01 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -61,23 +61,23 @@ INSERT INTO `blogdata` (`id`, `imgSrc`, `date`, `user`, `clock`, `title`, `creat
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `blog_id` int(11) NOT NULL,
-  `category_name` varchar(255) NOT NULL
+  `category_name` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=active, 0=inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `blog_id`, `category_name`) VALUES
-(1, 1, 'Fashion'),
-(2, 2, 'Beauty'),
-(3, 3, 'Life style'),
-(4, 4, 'Travel'),
-(5, 5, 'Food'),
-(6, 6, 'Video'),
-(7, 7, 'Technology'),
-(8, 8, 'sports'),
-(9, 9, 'light');
+INSERT INTO `category` (`id`, `blog_id`, `category_name`, `status`) VALUES
+(2, 2, 'Beauty', 1),
+(3, 3, 'Life style', 1),
+(4, 4, 'Travel', 1),
+(5, 5, 'Food', 1),
+(6, 6, 'Video', 1),
+(7, 7, 'Technology', 1),
+(8, 8, 'sports', 1),
+(9, 9, 'light', 0);
 
 -- --------------------------------------------------------
 
@@ -111,26 +111,26 @@ INSERT INTO `slider` (`slider_id`, `blog_id`, `slider_img`, `slider_title`, `sli
 CREATE TABLE `subcategory` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1-active,0=inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `subcategory`
 --
 
-INSERT INTO `subcategory` (`id`, `category_id`, `name`) VALUES
-(1, 1, 'clothes'),
-(2, 1, 'makeup'),
-(3, 2, 'Body care'),
-(4, 2, 'Hair care'),
-(5, 3, 'wealth'),
-(6, 4, 'Business travel'),
-(7, 5, 'vegetables'),
-(8, 5, 'fruits'),
-(9, 6, 'Ambient video'),
-(10, 7, 'iot'),
-(11, 8, 'Event Travel'),
-(12, 9, 'Solo Travel');
+INSERT INTO `subcategory` (`id`, `category_id`, `name`, `status`) VALUES
+(2, 1, 'beauty', 1),
+(3, 2, 'Body care', 1),
+(4, 2, 'Hair care', 1),
+(5, 3, 'wealth', 1),
+(6, 4, 'Business travel', 1),
+(7, 5, 'vegetables', 1),
+(8, 5, 'fruits', 1),
+(9, 6, 'Ambient video', 1),
+(10, 7, 'iot', 1),
+(11, 8, 'Event Travel', 1),
+(12, 9, 'Solo Travel', 1);
 
 --
 -- Indexes for dumped tables
@@ -174,7 +174,7 @@ ALTER TABLE `blogdata`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `slider`
@@ -186,7 +186,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
