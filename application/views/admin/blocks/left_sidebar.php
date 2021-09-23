@@ -84,6 +84,12 @@
                     <span>Sub Category</span>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo base_url('admin/blog/Blog') ?>" class="waves-effect">
+                    <i class="uil-store"></i>
+                    <span>Blog</span>
+                </a>
+            </li>
 
             <!-- <li>
                 <a href="chat.html" class=" waves-effect">

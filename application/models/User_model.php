@@ -22,10 +22,18 @@ class User_model extends CI_Model
 	public function getCategoryData(){
 		$this->db->select("*");
             $this->db->from("category");
-			// $this->db->join("blogdata", "category.blog_id=blogdata.id");
+			// $this->db->join("subcategory", "category.blog_id=subcategory.id");
             $query = $this->db->get();
             return $query->result_array();
 	}
+	public function getCategoryDatainBlog(){
+		$this->db->select("*");
+            $this->db->from("category");
+			$this->db->join("subcategory", "category.blog_id=subcategory.id");
+            $query = $this->db->get();
+            return $query->result_array();
+	}
+
 	public function getSubategoryData(){
 		$this->db->select("*");
             $this->db->from("subcategory");
@@ -39,6 +47,10 @@ class User_model extends CI_Model
 		
 		return $this->db->insert('category', $name);
 	}
+	public function addblog($name){
+		
+		return $this->db->insert('blogdata', $name);
+	}
 	public function addsubcategory($name){
 		// print_r($name);die();
 		return $this->db->insert('subcategory', $name);
@@ -46,6 +58,14 @@ class User_model extends CI_Model
 	public function getSingleCategoryData($id){
 			$this->db->select("*");
             $this->db->from("category");
+            $this->db->where("id",$id);
+			// $this->db->join("blogdata", "category.blog_id=blogdata.id");
+            $query = $this->db->get();
+            return $query->result_array();
+	}
+	public function getSingleBlogData($id){
+			$this->db->select("*");
+            $this->db->from("blogdata");
             $this->db->where("id",$id);
 			// $this->db->join("blogdata", "category.blog_id=blogdata.id");
             $query = $this->db->get();
@@ -72,6 +92,19 @@ class User_model extends CI_Model
 		// print_r($this->db->affected_rows());die();
 		return $this->db->affected_rows();
 	}
+	public function update_blog($id)
+	{
+	
+		$data = array(
+			'imgSrc' => $this->input->post('Imgname'),
+			'title' => $this->input->post('title'),
+			'date' => $this->input->post('date'),
+		);
+		// print_r($id);die();
+		$query = $this->db->update('blogdata',$data,['id'=>$id]);
+		// print_r($this->db->affected_rows());die();
+		return $this->db->affected_rows();
+	}
 	public function update_subcategory($id)
 	{
 	
@@ -95,6 +128,19 @@ class User_model extends CI_Model
 		// print_r($this->db->affected_rows());die();
 		$this -> db -> where('id', $id);
     	$this -> db -> delete('category');
+		return $this->db->affected_rows();
+	}
+	public function delete_blog($id)
+	{
+	
+		// $data = array(
+		// 	'category_name' => $this->input->post('Categoryname'),
+		// );
+		// print_r($id);die();
+		// print_r($data);die();
+		// print_r($this->db->affected_rows());die();
+		$this -> db -> where('id', $id);
+    	$this -> db -> delete('blogdata');
 		return $this->db->affected_rows();
 	}
 	public function delete_subcategory($id)
