@@ -20,12 +20,15 @@ class Category extends CI_Controller {
 		$this->load->view('admin/blocks/left_sidebar');
 		$this->load->view('admin/category/category',$data);
 		$this->load->view('admin/blocks/footer');
+
+		
 	}
 	public function addCategory(){
 		
+		$data['blogs']=$this->User_model->getBlogData();
 		$this->load->view('admin/blocks/header');
 		$this->load->view('admin/blocks/left_sidebar');
-		$this->load->view('admin/category/addcategory');
+		$this->load->view('admin/category/addcategory',$data);
 		$this->load->view('admin/blocks/footer');
 		
 	}
@@ -33,7 +36,8 @@ class Category extends CI_Controller {
 	public function insert(){
 		
 		$data = array(
-			    'category_name' => $this->input->post('Categoryname')
+			    'category_name' => $this->input->post('Categoryname'),
+			    'blog_id' => $this->input->post('blogid'),
 				);
 		// print_r($data);die();
 		$result=$this->User_model->addcategory($data);
@@ -54,6 +58,18 @@ class Category extends CI_Controller {
 	public function update(){
 		$id=$this->uri->segment('5');
 		$data['categories']=$this->User_model->update_category($id);
+		redirect('admin/category/Category');
+	}
+	public function inactive(){
+		$id=$this->uri->segment('5');
+		// echo $id; die();
+		$data['categories']=$this->User_model->update_status_inactive($id);
+		redirect('admin/category/Category');
+	}
+	public function active(){
+		$id=$this->uri->segment('5');
+		// echo $id; die();
+		$data['categories']=$this->User_model->update_status_active($id);
 		redirect('admin/category/Category');
 	}
 	public function deleteCategory(){

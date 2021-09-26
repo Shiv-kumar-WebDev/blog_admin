@@ -35,7 +35,7 @@
             <li class="menu-title">Menu</li>
 
             <li>
-                <a href="<?php base_url('admin/Admin');?>">
+                <a href="<?php echo base_url('admin/Admin');?>">
                     <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
                     <span>Dashboard</span>
                 </a>

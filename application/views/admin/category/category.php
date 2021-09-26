@@ -60,22 +60,22 @@
                                             <tr>
                                                 
                                                 
-                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $category['id'] ?></a> </td>
+                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $category['category_id'] ?></a> </td>
                                                 <td>
                                                 <?php echo $category['category_name'] ?>
                                                 </td>
                                                 <td><?php if($category['status']==1){
-                                                    echo 'active';
+                                                    echo '<a href="'.base_url('admin/category/Category/inactive/'.$category['category_id'].'').'" class="btn btn-success">active</a>';
                                                 }else{
-                                                    echo 'inactive';
+                                                    echo '<a href="'.base_url('admin/category/Category/active/'.$category['category_id'].'').'" class="btn btn-danger">inactive</a>';
                                                 } ?></td>
                                                 
                                                 
                                                
                                                 
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/category/Category/editCategory') ?>/<?php echo $category['id'] ?>" class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>
-                                                    <a href="<?php echo base_url('admin/category/Category/deleteCategory') ?>/<?php echo $category['id'] ?>" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
+                                                    <a href="<?php echo base_url('admin/category/Category/editCategory') ?>/<?php echo $category['category_id'] ?>" class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>
+                                                    <a href="<?php echo base_url('admin/category/Category/deleteCategory') ?>/<?php echo $category['category_id'] ?>" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

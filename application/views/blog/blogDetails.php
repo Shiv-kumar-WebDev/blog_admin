@@ -1,5 +1,5 @@
-<!-- Single Blog Banner Start Here -->
-<section class="single-blog-wrap-layout1">
+  <!-- Single Blog Banner Start Here -->
+  <section class="single-blog-wrap-layout1">
             <div class="single-blog-banner-layout1">
                 <div class="banner-img">
                     <img src="<?php echo base_url('assets/blog/img/blog/blog208.jpg'); ?>" alt="blog">
@@ -143,7 +143,7 @@
                             </div>
                             <div class="blog-author">
                                 <div class="media media-none--xs">
-                                    <img src="img\blog\blog212.jpg" alt="Author" class="media-img-auto">
+                                    <img src="<?php echo base_url('assets/blog/img/blog/blog212.jpg') ?>" alt="Author" class="media-img-auto">
                                     <div class="media-body">
                                         <h4 class="item-title">Lora Zaman</h4>
                                         <div class="item-subtitle">Author</div>
@@ -167,7 +167,7 @@
                                     <div class="col-sm-4 col-12">
                                         <div class="blog-box-layout1 text-left">
                                             <div class="item-img">
-                                                <a href="single-blog.html"><img src="img\blog\blog213.jpg" alt="blog"></a>
+                                                <a href="single-blog.html"><img src="<?php echo base_url('assets/blog/img/blog/blog213.jpg') ?>" alt="blog"></a>
                                             </div>
                                             <div class="item-content">
                                                 <ul class="entry-meta meta-color-dark">
@@ -183,7 +183,7 @@
                                     <div class="col-sm-4 col-12">
                                         <div class="blog-box-layout1 text-left">
                                             <div class="item-img">
-                                                <a href="single-blog.html"><img src="img\blog\blog214.jpg" alt="blog"></a>
+                                                <a href="single-blog.html"><img src="<?php echo base_url('assets/blog/img/blog/blog214.jpg') ?>" alt="blog"></a>
                                             </div>
                                             <div class="item-content">
                                                 <ul class="entry-meta meta-color-dark">
@@ -199,7 +199,7 @@
                                     <div class="col-sm-4 col-12">
                                         <div class="blog-box-layout1 text-left">
                                             <div class="item-img">
-                                                <a href="single-blog.html"><img src="img\blog\blog215.jpg" alt="blog"></a>
+                                                <a href="single-blog.html"><img src="<?php echo base_url('assets/blog/img/blog/blog215.jpg') ?>" alt="blog"></a>
                                             </div>
                                             <div class="item-content">
                                                 <ul class="entry-meta meta-color-dark">
@@ -219,7 +219,7 @@
                                     <h3 class="item-heading">02 COMMENTS</h3>
                                 </div>
                                 <div class="media media-none--xs">
-                                    <img src="img\blog\blog216.jpg" alt="Blog Comments" class="img-fluid media-img-auto">
+                                    <img src="<?php echo base_url('assets/blog/img/blog/blog216.jpg') ?>" alt="Blog Comments" class="img-fluid media-img-auto">
                                     <div class="media-body">
                                         <h4 class="item-title">Jack Sparrow</h4>
                                         <div class="item-subtitle">2 Mins Ago</div>
@@ -229,7 +229,7 @@
                                     </div>
                                 </div>
                                 <div class="media media-none--xs">
-                                    <img src="img\blog\blog217.jpg" alt="Blog Comments" class="img-fluid media-img-auto">
+                                    <img src="<?php echo base_url('assets/blog/img/blog/blog217.jpg') ?>" alt="Blog Comments" class="img-fluid media-img-auto">
                                     <div class="media-body">
                                         <h4 class="item-title">Dakcon Nitiya</h4>
                                         <div class="item-subtitle">2 Mins Ago</div>
@@ -283,7 +283,7 @@
                                 <ul class="block-list">
                                     <li class="single-item">
                                         <div class="item-img">
-                                            <a href="#"><img src="img\blog\blog85.jpg" alt="Post"></a>
+                                            <a href="#"><img src="<?php echo base_url('assets/blog/img/blog/blog85.jpg') ?>" alt="Post"></a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
@@ -296,7 +296,7 @@
                                     </li>
                                     <li class="single-item">
                                         <div class="item-img">
-                                            <a href="#"><img src="img\blog\blog86.jpg" alt="Post"></a>
+                                            <a href="#"><img src="<?php echo base_url('assets/blog/img/blog/blog86.jpg') ?>" alt="Post"></a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
@@ -309,7 +309,7 @@
                                     </li>
                                     <li class="single-item">
                                         <div class="item-img">
-                                            <a href="#"><img src="img\blog\blog87.jpg" alt="Post"></a>
+                                            <a href="#"><img src="<?php echo base_url('assets/blog/img/blog/blog87.jpg') ?>" alt="Post"></a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
@@ -322,7 +322,7 @@
                                     </li>
                                     <li class="single-item">
                                         <div class="item-img">
-                                            <a href="#"><img src="img\blog\blog88.jpg" alt="Post"></a>
+                                            <a href="#"><img src="<?php echo base_url('assets/blog/img/blog/blog88.jpg') ?>" alt="Post"></a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
@@ -398,7 +398,7 @@
                         </div>
                         <div class="widget">
                             <div class="widget-ad">
-                                <a href="#"><img src="img\figure\figure5.jpg" alt="Ad" class="img-fluid"></a>
+                                <a href="#"><img src="<?php echo base_url('assets/blog/img/figure/figure5.jpg') ?>" alt="Ad" class="img-fluid"></a>
                             </div>
                         </div>
                     </div>
@@ -406,3 +406,4 @@
             </div>
         </section>
         <!-- Single Blog Banner End Here -->
+ 

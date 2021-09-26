@@ -41,7 +41,7 @@
                     >
                       <div class="p-4 border-top">
                           <?php foreach($categories as $category){ ?>
-                        <form action="<?php echo base_url('admin/category/Category/update') ?>/<?php echo $category['id'] ?>" method="post">
+                        <form action="<?php echo base_url('admin/category/Category/update') ?>/<?php echo $category['category_id'] ?>" method="post">
                           <div class="mb-3">
                             <label class="form-label" for="Categoryname"
                               >Category Name</label

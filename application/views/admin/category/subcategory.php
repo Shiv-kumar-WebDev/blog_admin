@@ -50,6 +50,7 @@
                                                 
                                                 <th>ID</th>
                                                 <!-- <th>Category name</th> -->
+                                                <th>Category Name</th>
                                                 <th>Sub Category</th>
                                                 <th>Sub Category status</th>
                                                 <th style="width: 120px;">Action</th>
@@ -57,29 +58,31 @@
                                         </thead>
                                         <tbody>
 
-                                        <?php foreach($categories as $category){ ?>
+                                        <?php foreach($sub_categories as $category){
+                                            //echo "<pre>"; 
+                                            //print_r($category);die();
+                                            ?>
                                             <tr>
                                                 
                                                 
-                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $category['id'] ?></a> </td>
-                                                <!-- <td> -->
-                                                <?php //echo $category['category_name'] ?>
-                                                <!-- </td> -->
+                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $category['subcategory_id'] ?></a> </td>
+                                                <td>
+                                                <?php echo $category['category_name'] ?>
+                                                </td>
                                                 <td>
                                                 <?php echo $category['name'] ?>
                                                 </td>
                                                 <td><?php if($category['status']==1){
-                                                    echo 'active';
+                                                    echo '<a href="'.base_url('admin/category/Subcategory/inactive/'.$category['subcategory_id'].'').'" class="btn btn-success">active</a>';
                                                 }else{
-                                                    echo 'inactive';
+                                                    echo '<a href="'.base_url('admin/category/Subcategory/active/'.$category['subcategory_id'].'').'" class="btn btn-danger">inactive</a>';
                                                 } ?></td>
                                                 
                                                 
                                                
-                                                
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/category/Subcategory/editSubCategory') ?>/<?php echo $category['id'] ?>" class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>
-                                                    <a href="<?php echo base_url('admin/category/Subcategory/deleteSubCategory') ?>/<?php echo $category['id'] ?>" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
+                                                    <a href="<?php echo base_url('admin/category/Subcategory/editSubCategory') ?>/<?php echo $category['subcategory_id'] ?>" class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>
+                                                    <a href="<?php echo base_url('admin/category/Subcategory/deleteSubCategory') ?>/<?php echo $category['subcategory_id'] ?>" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

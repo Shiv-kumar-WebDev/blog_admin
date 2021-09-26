@@ -42,6 +42,15 @@
                       <div class="p-4 border-top">
                         <form action="<?php echo base_url('admin/category/Subcategory/insert') ?>" method="post">
                           <div class="mb-3">
+                          <label class="form-label" for="Categoryname"
+                              >Category Name</label
+                            >
+                            <select name="Categoryid" id="Categoryname" class="form-control">
+                              <option value="">Select Name</option>
+                              <?php foreach($categories as $category){?>
+                              <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
+                              <?php }?>
+                            </select>
                             <label class="form-label" for="SubCategoryname"
                               >SubCategory Name</label
                             >

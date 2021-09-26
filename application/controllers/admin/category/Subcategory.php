@@ -13,7 +13,7 @@ class Subcategory extends CI_Controller {
 	public function index()
 	{	
 		$this->load->model("User_model");
-		$data['categories']=$this->User_model->getSubategoryData();
+		$data['sub_categories']=$this->User_model->getSubcategoryData();
 		// print_r($data);die();
 
 		$this->load->view('admin/blocks/header');
@@ -23,16 +23,18 @@ class Subcategory extends CI_Controller {
 	}
 	public function addSubCategory(){
 
-		// $data['categories']=$this->User_model->getCategoryData();
+		$this->load->model("User_model");
+		$data['categories']=$this->User_model->getCategoryData();
 		$this->load->view('admin/blocks/header');
 		$this->load->view('admin/blocks/left_sidebar');
-		$this->load->view('admin/category/addsubcategory');
+		$this->load->view('admin/category/addsubcategory',$data);
 		$this->load->view('admin/blocks/footer');
 	}
 	public function insert(){
 		
 		$data = array(
-			    'name' => $this->input->post('SubCategoryname')
+			    'name' => $this->input->post('SubCategoryname'),
+			    'category_id' => $this->input->post('Categoryid'),
 				);
 		// print_r($data);die();
 		$this->load->model("User_model");
@@ -46,6 +48,8 @@ class Subcategory extends CI_Controller {
 		// echo $id;die();
 		$this->load->model("User_model");
 		$data['subcategories']=$this->User_model->getSingleSubCategoryData($id);
+		$data['categories']=$this->User_model->getCategoryData();
+		// print_r($data);die();
 
 		$this->load->view('admin/blocks/header');
 		$this->load->view('admin/blocks/left_sidebar');
@@ -57,6 +61,20 @@ class Subcategory extends CI_Controller {
 		// echo $id; die();
 		$this->load->model("User_model");
 		$data['subcategories']=$this->User_model->update_subcategory($id);
+		redirect('admin/category/Subcategory');
+	}
+	public function inactive(){
+		$id=$this->uri->segment('5');
+		// echo $id; die();
+		$this->load->model("User_model");
+		$data['categories']=$this->User_model->update_subcat_status_inactive($id);
+		redirect('admin/category/Subcategory');
+	}
+	public function active(){
+		$id=$this->uri->segment('5');
+		// echo $id; die();
+		$this->load->model("User_model");
+		$data['categories']=$this->User_model->update_subcat_status_active($id);
 		redirect('admin/category/Subcategory');
 	}
 	public function deleteSubCategory(){

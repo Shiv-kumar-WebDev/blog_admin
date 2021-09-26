@@ -40,9 +40,19 @@
                       data-bs-parent="#addproduct-accordion"
                     >
                       <div class="p-4 border-top">
-                          <?php foreach($subcategories as $subcategory){ ?>
-                        <form action="<?php echo base_url('admin/category/Subcategory/update') ?>/<?php echo $subcategory['id'] ?>" method="post">
+                        <form action="<?php echo base_url('admin/category/Subcategory/update') ?>/<?php echo $subcategories[0]['subcategory_id'] ?>" method="post">
                           <div class="mb-3">
+                          <label class="form-label" for="Categoryname"
+                              >Category Name</label
+                            >
+                            <select name="Categoryid" id="Categoryname" class="form-control">
+                              <option value="">Select Name</option>
+                              <?php foreach($categories as $category){?>
+                              <option <?php if($category['category_id']==$subcategories[0]['category_id']){
+                                echo 'selected';
+                              } ?> value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
+                              <?php }?>
+                            </select>
                             <label class="form-label" for="Categoryname"
                               >Sub Category Name</label
                             >
@@ -51,7 +61,7 @@
                               name="SubCategoryname"
                               type="text"
                               class="form-control"
-                              value="<?php echo $subcategory['name'] ?>"
+                              value="<?php echo $subcategories[0]['name'] ?>"
                             />
                           </div>
                           
@@ -63,7 +73,6 @@
                           </a>
                           </button>
                         </form>
-                        <?php } ?>
                       </div>
                     </div>
                   </div>

@@ -34,13 +34,14 @@ class User_model extends CI_Model
             return $query->result_array();
 	}
 
-	public function getSubategoryData(){
-		$this->db->select("*");
+	public function getSubcategoryData(){
+		$this->db->select("subcategory.*,category.category_name,category.category_id");
             $this->db->from("subcategory");
-			// $this->db->join("category", "category.blog_id=subcategory.id");
+			$this->db->join("category", "category.category_id=subcategory.category_id");
             $query = $this->db->get();
             return $query->result_array();
 	}
+	
 
 
 	public function addcategory($name){
@@ -58,7 +59,7 @@ class User_model extends CI_Model
 	public function getSingleCategoryData($id){
 			$this->db->select("*");
             $this->db->from("category");
-            $this->db->where("id",$id);
+            $this->db->where("category_id",$id);
 			// $this->db->join("blogdata", "category.blog_id=blogdata.id");
             $query = $this->db->get();
             return $query->result_array();
@@ -72,9 +73,10 @@ class User_model extends CI_Model
             return $query->result_array();
 	}
 	public function getSingleSubCategoryData($id){
+			// echo $id;die();
 			$this->db->select("*");
             $this->db->from("subcategory");
-            $this->db->where("id",$id);
+            $this->db->where("subcategory_id",$id);
 			// $this->db->join("blogdata", "category.blog_id=blogdata.id");
             $query = $this->db->get();
             return $query->result_array();
@@ -88,7 +90,51 @@ class User_model extends CI_Model
 			'category_name' => $this->input->post('Categoryname'),
 		);
 		// print_r($id);die();
-		$query = $this->db->update('category',$data,['id'=>$id]);
+		$query = $this->db->update('category',$data,['category_id'=>$id]);
+		// print_r($this->db->affected_rows());die();
+		return $this->db->affected_rows();
+	}
+	public function update_status_inactive($id)
+	{
+	
+		$data = array(
+			'status' => 0,
+		);
+		// print_r($id);die();
+		$query = $this->db->update('category',$data,['category_id'=>$id]);
+		// print_r($this->db->affected_rows());die();
+		return $this->db->affected_rows();
+	}
+	public function update_status_active($id)
+	{
+	
+		$data = array(
+			'status' => 1,
+		);
+		// print_r($id);die();
+		$query = $this->db->update('category',$data,['category_id'=>$id]);
+		// print_r($this->db->affected_rows());die();
+		return $this->db->affected_rows();
+	}
+	public function update_subcat_status_inactive($id)
+	{
+	
+		$data = array(
+			'status' => 0,
+		);
+		// print_r($id);die();
+		$query = $this->db->update('subcategory',$data,['subcategory_id'=>$id]);
+		// print_r($this->db->affected_rows());die();
+		return $this->db->affected_rows();
+	}
+	public function update_subcat_status_active($id)
+	{
+	
+		$data = array(
+			'status' => 1,
+		);
+		// print_r($id);die();
+		$query = $this->db->update('subcategory',$data,['subcategory_id'=>$id]);
 		// print_r($this->db->affected_rows());die();
 		return $this->db->affected_rows();
 	}
@@ -110,10 +156,11 @@ class User_model extends CI_Model
 	
 		$data = array(
 			'name' => $this->input->post('SubCategoryname'),
+			'category_id' => $this->input->post('Categoryid'),
 		);
 		// print_r($id);die();
 		// print_r($data);die();
-		$query = $this->db->update('subcategory',$data,['id'=>$id]);
+		$query = $this->db->update('subcategory',$data,['subcategory_id'=>$id]);
 		// print_r($this->db->affected_rows());die();
 		return $this->db->affected_rows();
 	}
@@ -126,8 +173,10 @@ class User_model extends CI_Model
 		// print_r($id);die();
 		// print_r($data);die();
 		// print_r($this->db->affected_rows());die();
-		$this -> db -> where('id', $id);
+		$this -> db -> where('category_id', $id);
     	$this -> db -> delete('category');
+		$this -> db -> where('category_id', $id);
+    	$this -> db -> delete('subcategory');
 		return $this->db->affected_rows();
 	}
 	public function delete_blog($id)
@@ -152,7 +201,7 @@ class User_model extends CI_Model
 		// print_r($id);die();
 		// print_r($data);die();
 		// print_r($this->db->affected_rows());die();
-		$this -> db -> where('id', $id);
+		$this -> db -> where('subcategory_id', $id);
     	$this -> db -> delete('subcategory');
 		return $this->db->affected_rows();
 	}

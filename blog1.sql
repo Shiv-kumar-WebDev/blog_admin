@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2021 at 03:01 PM
+-- Generation Time: Sep 26, 2021 at 12:40 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -34,23 +34,23 @@ CREATE TABLE `blogdata` (
   `user` varchar(255) NOT NULL,
   `clock` text NOT NULL,
   `title` longtext NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=active,0=inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blogdata`
 --
 
-INSERT INTO `blogdata` (`id`, `imgSrc`, `date`, `user`, `clock`, `title`, `created_at`) VALUES
-(1, 'slide3-1.jpg', 'Jan 19, 2019', 'Mark Willy', '5 Mins Read', 'Technology Inside the new battl eraa for the american west.', '2021-09-12 15:42:42'),
-(2, 'slide3-2.jpg', 'Feb 23, 2019', 'Kady', '3 Mins Read', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum officia dolor ab expedita, sequi fugiat modi,', '2021-09-12 15:55:27'),
-(3, 'slide3-3.jpg', 'Jan 19, 2019', 'Nilly', '2 Mins Read', 'rerum labore voluptatibus, asperiores enim quo accusamus ullam voluptate nihil iure excepturi culpa sapiente.', '2021-09-12 15:58:01'),
-(4, 'blog36.jpg', 'Jan 12, 2019', '', '', 'How an Island Formsniver And Stones', '2021-09-12 16:26:43'),
-(5, 'blog35.jpg', 'Jan 18, 2019', '', '', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur tempore aut repellat ipsum natus, nisi ', '2021-09-12 16:26:43'),
-(6, 'blog37.jpg', 'Jan 30, 2019', '', '', 'et atque ab nemo eius magni, eos quaerat aliquid modi cum impedit reiciendis, amet ea totam qui mollitia unde. ', '2021-09-12 16:26:43'),
-(7, 'blog38.jpg', 'Jan 15, 2019', '', '', 'Esse officia ipsam impedit sapiente. Est quisquam ipsum suscipit corrupti ducimus nihil? Recusandae mollitia ', '2021-09-12 16:26:43'),
-(8, 'blog39.jpg', 'Jan 10, 2019', '', '', 'aliquid quia, reiciendis voluptas dignissimos nemo! Sint unde dolores, quibusdam accusantium possimus ullam', '2021-09-12 16:26:43'),
-(9, 'blog40.jpg', 'Jan 28, 2019', '', '', 'fugit nulla sit, consequatur quod, dignissimos repudiandae. Eaque recusandae laudantium magni ipsam placeat ex ', '2021-09-12 16:26:43');
+INSERT INTO `blogdata` (`id`, `imgSrc`, `date`, `user`, `clock`, `title`, `created_at`, `status`) VALUES
+(1, 'slide3-1.jpg', 'Jan 19, 2019', 'Mark Willy', '5 Mins Read', 'Technology Inside the new battl eraa for the american west.', '2021-09-12 15:42:42', 1),
+(2, 'slide3-2.jpg', 'Feb 23, 2019', 'Kady', '3 Mins Read', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum officia dolor ab expedita, sequi fugiat modi,', '2021-09-12 15:55:27', 1),
+(3, 'slide3-3.jpg', 'Jan 19, 2019', 'Nilly', '2 Mins Read', 'rerum labore voluptatibus, asperiores enim quo accusamus ullam voluptate nihil iure excepturi culpa sapiente.', '2021-09-12 15:58:01', 1),
+(4, 'blog36.jpg', 'Jan 12, 2019', '', '', 'How an Island Formsniver And Stones', '2021-09-12 16:26:43', 1),
+(5, 'blog35.jpg', 'Jan 18, 2019', '', '', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur tempore aut repellat ipsum natus, nisi ', '2021-09-12 16:26:43', 1),
+(6, 'blog37.jpg', 'Jan 30, 2019', '', '', 'et atque ab nemo eius magni, eos quaerat aliquid modi cum impedit reiciendis, amet ea totam qui mollitia unde. ', '2021-09-12 16:26:43', 1),
+(7, 'blog38.jpg', 'Jan 15, 2019', '', '', 'Esse officia ipsam impedit sapiente. Est quisquam ipsum suscipit corrupti ducimus nihil? Recusandae mollitia ', '2021-09-12 16:26:43', 1),
+(8, 'blog39.jpg', 'Jan 10, 2019', '', '', 'aliquid quia, reiciendis voluptas dignissimos nemo! Sint unde dolores, quibusdam accusantium possimus ullam', '2021-09-12 16:26:43', 1);
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ INSERT INTO `blogdata` (`id`, `imgSrc`, `date`, `user`, `clock`, `title`, `creat
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `blog_id` int(11) NOT NULL,
   `category_name` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1=active, 0=inactive'
@@ -69,15 +69,10 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `blog_id`, `category_name`, `status`) VALUES
-(2, 2, 'Beauty', 1),
-(3, 3, 'Life style', 1),
-(4, 4, 'Travel', 1),
-(5, 5, 'Food', 1),
-(6, 6, 'Video', 1),
-(7, 7, 'Technology', 1),
-(8, 8, 'sports', 1),
-(9, 9, 'light', 0);
+INSERT INTO `category` (`category_id`, `blog_id`, `category_name`, `status`) VALUES
+(16, 3, 'Fashion', 0),
+(17, 4, 'Health', 1),
+(18, 1, 'Beauty', 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +104,7 @@ INSERT INTO `slider` (`slider_id`, `blog_id`, `slider_img`, `slider_title`, `sli
 --
 
 CREATE TABLE `subcategory` (
-  `id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1-active,0=inactive'
@@ -119,18 +114,8 @@ CREATE TABLE `subcategory` (
 -- Dumping data for table `subcategory`
 --
 
-INSERT INTO `subcategory` (`id`, `category_id`, `name`, `status`) VALUES
-(2, 1, 'beauty', 1),
-(3, 2, 'Body care', 1),
-(4, 2, 'Hair care', 1),
-(5, 3, 'wealth', 1),
-(6, 4, 'Business travel', 1),
-(7, 5, 'vegetables', 1),
-(8, 5, 'fruits', 1),
-(9, 6, 'Ambient video', 1),
-(10, 7, 'iot', 1),
-(11, 8, 'Event Travel', 1),
-(12, 9, 'Solo Travel', 1);
+INSERT INTO `subcategory` (`subcategory_id`, `category_id`, `name`, `status`) VALUES
+(27, 18, 'facecare', 0);
 
 --
 -- Indexes for dumped tables
@@ -146,7 +131,7 @@ ALTER TABLE `blogdata`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`category_id`);
 
 --
 -- Indexes for table `slider`
@@ -158,7 +143,8 @@ ALTER TABLE `slider`
 -- Indexes for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`subcategory_id`),
+  ADD UNIQUE KEY `category_id` (`category_id`,`name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -168,13 +154,13 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT for table `blogdata`
 --
 ALTER TABLE `blogdata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `slider`
@@ -186,7 +172,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `subcategory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
