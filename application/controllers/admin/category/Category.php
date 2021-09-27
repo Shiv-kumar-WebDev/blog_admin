@@ -25,10 +25,10 @@ class Category extends CI_Controller {
 	}
 	public function addCategory(){
 		
-		$data['blogs']=$this->User_model->getBlogData();
+		// $data['blogs']=$this->User_model->getBlogData();
 		$this->load->view('admin/blocks/header');
 		$this->load->view('admin/blocks/left_sidebar');
-		$this->load->view('admin/category/addcategory',$data);
+		$this->load->view('admin/category/addcategory');
 		$this->load->view('admin/blocks/footer');
 		
 	}
@@ -37,7 +37,6 @@ class Category extends CI_Controller {
 		
 		$data = array(
 			    'category_name' => $this->input->post('Categoryname'),
-			    'blog_id' => $this->input->post('blogid'),
 				);
 		// print_r($data);die();
 		$result=$this->User_model->addcategory($data);

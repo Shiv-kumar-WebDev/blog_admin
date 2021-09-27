@@ -31,9 +31,12 @@ class Blog extends CI_Controller {
 	}
 	public function addBlog(){
 		
+		$this->load->model("User_model");
+		$data['categories']=$this->User_model->getCategoryData();
+		$data['subcategories']=$this->User_model->getSubcategoryData();
 		$this->load->view('admin/blocks/header');
 		$this->load->view('admin/blocks/left_sidebar');
-		$this->load->view('admin/blog/addBlog');
+		$this->load->view('admin/blog/addBlog',$data);
 		$this->load->view('admin/blocks/footer');
 		
 	}

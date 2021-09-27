@@ -40,8 +40,26 @@
                       data-bs-parent="#addproduct-accordion"
                     >
                       <div class="p-4 border-top">
-                        <form action="<?php echo base_url('admin/blog/Blog/insert') ?>" method="post">
+                        <form action="<?php echo base_url('admin/blog/Blog/insert') ?>" method="post" enctype="multipart/form-data">
                           <div class="mb-3">
+                          <label class="form-label" for="Categoryname"
+                              >Category Name</label
+                            >
+                            <select name="Categoryid" id="Categoryname" class="form-control mb-2">
+                              <option value="">Select Name</option>
+                              <?php foreach($categories as $category){?>
+                              <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
+                              <?php }?>
+                            </select>
+                          <label class="form-label" for="subcategoryname"
+                              >Subcategory Name</label
+                            >
+                            <select name="subcategoryid" id="subcategoryname" class="form-control">
+                              <option value="">Select Name</option>
+                              <?php foreach($subcategories as $subcategory){?>
+                              <option value="<?php echo $subcategory['subcategory_id']; ?>"><?php echo $subcategory['name']; ?></option>
+                              <?php }?>
+                            </select>
                             <label class="form-label" for="title"
                               >Title</label
                             >
@@ -64,15 +82,10 @@
                             />
                           </div>
                           <div class="mb-3">
-                            <label class="form-label" for="imgSrc"
-                              >Img src</label
+                            <label class="form-label" for="image"
+                              >Image</label
                             >
-                            <input
-                              id="imgSrc"
-                              name="imgSrc"
-                              type="text"
-                              class="form-control"
-                            />
+                            <input type="file" name="image" id="" class="form-control" >
                           </div>
                           
                          

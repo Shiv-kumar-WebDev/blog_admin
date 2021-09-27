@@ -26,6 +26,14 @@ class User_model extends CI_Model
             $query = $this->db->get();
             return $query->result_array();
 	}
+	public function getCategoryData1(){
+		$this->db->select("*");
+            $this->db->from("category");
+			$this->db->where("category.status",1);
+			// $this->db->join("subcategory", "category.blog_id=subcategory.id");
+            $query = $this->db->get();
+            return $query->result_array();
+	}
 	public function getCategoryDatainBlog(){
 		$this->db->select("*");
             $this->db->from("category");
