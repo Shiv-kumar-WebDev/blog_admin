@@ -48,35 +48,49 @@
                                         <thead>
                                             <tr class="bg-transparent">
                                                 
-                                                <th>ID</th>
-                                                <th>Img src</th>
+                                                <th>S. No</th>
+                                                <th>Image</th>
                                                 <th>Date</th>
                                                 <th>Title</th>
+                                                <th>Description</th>
                                                 <th>Blog status</th>
+                                                <th>Popular post</th>
                                                 <th style="width: 120px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                        <?php foreach($blogs as $blog){ ?>
+                                        <?php $i=1; foreach($blogs as $blog){ ?>
                                             <tr>
                                                 
                                                 
-                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $blog['id'] ?></a> </td>
+                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $i++ ?></a> </td>
                                                 <td>
-                                                <?php echo $blog['imgSrc'] ?>
+                                                    <img width="200" src="<?php echo base_url('assets/admin/images/blogs/'); ?><?php echo $blog['imgSrc'] ?>" alt="blog">
                                                 </td>
                                                 <td>
-                                                <?php echo $blog['date'] ?>
+                                                <?php echo $blog['created_at'] ?>
                                                 </td>
                                                 <td>
                                                 <?php echo $blog['title'] ?>
                                                 </td>
+                                                <td>
+                                                <?php echo $blog['blog_description'] ?>
+                                                </td>
+                                                
                                                 <td><?php if($blog['status']==1){
-                                                    echo 'active';
+                                                    echo '<a href="'.base_url('admin/blog/Blog/inactive/'.$blog['id'].'').'" class="btn btn-success">active</a>';
                                                 }else{
-                                                    echo 'inactive';
+                                                    echo '<a href="'.base_url('admin/blog/Blog/active/'.$blog['id'].'').'" class="btn btn-danger">inactive</a>';
                                                 } ?></td>
+
+
+                                                <td><?php if($blog['popular_post']==1){
+                                                    echo '<a href="'.base_url('admin/blog/Blog/inactivePost/'.$blog['id'].'').'" class="btn btn-success">Popular Post</a>';
+                                                }else{
+                                                    echo '<a href="'.base_url('admin/blog/Blog/activePost/'.$blog['id'].'').'" class="btn btn-danger">Not a Popular Post</a>';
+                                                } ?></td>
+                                                
                                                 
                                                 
                                                

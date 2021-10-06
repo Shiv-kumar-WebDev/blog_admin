@@ -58,14 +58,14 @@
                                         </thead>
                                         <tbody>
 
-                                        <?php foreach($sub_categories as $category){
+                                        <?php $i=1; foreach($sub_categories as $category){
                                             //echo "<pre>"; 
                                             //print_r($category);die();
                                             ?>
                                             <tr>
                                                 
                                                 
-                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $category['subcategory_id'] ?></a> </td>
+                                                <td><a href="javascript: void(0);" class="text-dark fw-bold"><?php echo $i++; ?></a> </td>
                                                 <td>
                                                 <?php echo $category['category_name'] ?>
                                                 </td>

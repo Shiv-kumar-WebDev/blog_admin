@@ -15,13 +15,13 @@
                 <?php foreach($sliders as $slider){ ?>
                 <div class="slider-box-layout3">
                     <div class="item-img">
-                        <img src="<?php echo base_url(); ?>assets\blog\img\slider\<?php echo $slider['slider_img'] ?>" alt="slider">
+                        <img src="<?php echo base_url('assets/admin/images/sliders/'); ?><?php echo $slider['slider_img'] ?>" alt="slider">
                         <div class="item-content">
                             <ul class="entry-meta meta-color-light">
-                                <li><i class="fas fa-tag"></i><?php //echo $slider['tag'] ?></li>
-                                <li><i class="fas fa-calendar-alt"></i><?php echo $slider['date'] ?></li>
-                                <li><i class="fas fa-user"></i>BY <a href="#"><?php echo $slider['user'] ?></a></li>
-                                <li><i class="far fa-clock"></i><?php echo $slider['clock'] ?></li>
+                                <li><i class="fas fa-tag"></i><?php echo $slider['category_name'] ?></li>
+                                <!-- <li><i class="fas fa-calendar-alt"></i><?php //echo $slider['created_at'] ?></li> -->
+                                <!-- <li><i class="fas fa-user"></i>BY <a href="#"><?php //echo $slider['user'] ?></a></li> -->
+                                <li><i class="far fa-clock"></i><?php echo $slider['created_at'] ?></li>
                             </ul>
                             <h2 class="item-title"><a href="blog_detail.html"><?php echo $slider['slider_title'] ?></a></h2>
                         </div>
@@ -91,16 +91,19 @@
                     <div class="col-lg-9">
                         <div class="blog-wrap-layout5">
                             <div class="row">
-                                <?php foreach($blogs as $blog){ ?>
+                                <?php foreach($blogs as $blog){ 
+                                   // echo "<pre>";
+                                    // print_r($blog);die();
+                                    ?>
                                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="blog-box-layout2">
                                         <div class="item-img">
-                                            <a href="<?php echo base_url('Blog/blogDetails') ?>"><img src="<?php echo base_url(); ?>assets\blog\img\blog\<?php echo $blog['imgSrc'] ?>" alt="blog"></a>
+                                            <a href="<?php echo base_url('Blog/blogDetails/').$blog['id']; ?>"><img src="<?php echo base_url('assets/admin/images/blogs/'); ?><?php echo $blog['imgSrc'] ?>" alt="blog"></a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
-                                                <li><i class="fas fa-tag"></i><?php //echo $blog['tag'] ?></li>
-                                                <li><i class="fas fa-calendar-alt"></i><?php echo $blog['date'] ?></li>
+                                                <li><i class="fas fa-tag"></i><?php echo $blog['category_name'] ?></li>
+                                                <li><i class="fas fa-calendar-alt"></i><?php echo $blog['created_at'] ?></li>
                                             </ul>
                                             <h3 class="item-title"><a href="blog_detail.html"><?php echo $blog['title'] ?></a></h3>
                                         </div>
@@ -215,9 +218,9 @@
                             </div>
                             <div class="widget-categories">
                                 <ul>
-                                    <?php foreach($categories as $category){ ?>
+                                    <?php foreach($blogs as $blog){ ?>
                                     <li>
-                                        <a href="#"><?php echo $category['category_name']; ?>
+                                        <a href="#"><?php echo $blog['category_name']; ?>
                                             <span>(35)</span>
                                         </a>
                                     </li>
